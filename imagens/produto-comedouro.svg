@@ -1,22 +1,97 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
-  <rect width="400" height="300" rx="24" fill="#ecfdf5"/>
-  <circle cx="75" cy="75" r="42" fill="#d1fae5"/>
-  <circle cx="330" cy="225" r="52" fill="#a7f3d0" opacity="0.5"/>
-  <!-- Sombra -->
-  <ellipse cx="200" cy="238" rx="145" ry="18" fill="#6ee7b7" opacity="0.45"/>
-  <!-- Suporte de bambu elevado -->
-  <path d="M75 155h250l16 72h-22l-12-46H93l-12 46H59l16-72z" fill="#d97706"/>
-  <rect x="70" y="146" width="260" height="22" rx="10" fill="#f59e0b"/>
-  <!-- Tigela 1 (Inox) -->
-  <path d="M100 146h80l-10 38c-3 10-12 16-22 16h-16c-10 0-19-6-22-16l-10-38z" fill="#94a3b8"/>
-  <ellipse cx="140" cy="146" rx="42" ry="10" fill="#cbd5e1" stroke="#64748b" stroke-width="3"/>
-  <!-- Ração na tigela 1 -->
-  <circle cx="130" cy="145" r="5" fill="#92400e"/>
-  <circle cx="142" cy="143" r="5.5" fill="#78350f"/>
-  <circle cx="152" cy="146" r="5" fill="#92400e"/>
-  <circle cx="137" cy="148" r="5" fill="#b45309"/>
-  <!-- Tigela 2 (Inox - Água) -->
-  <path d="M220 146h80l-10 38c-3 10-12 16-22 16h-16c-10 0-19-6-22-16l-10-38z" fill="#94a3b8"/>
-  <ellipse cx="260" cy="146" rx="42" ry="10" fill="#cbd5e1" stroke="#64748b" stroke-width="3"/>
-  <ellipse cx="260" cy="147" rx="34" ry="6" fill="#38bdf8" opacity="0.75"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+  <defs>
+    <!-- Mesmo fundo de estúdio creme suave das fotos -->
+    <radialGradient id="studioBg" cx="50%" cy="42%" r="65%">
+      <stop offset="0%" stop-color="#fdfbf7"/>
+      <stop offset="100%" stop-color="#f3ede2"/>
+    </radialGradient>
+    <!-- Sombra suave de estúdio no chão -->
+    <radialGradient id="floorShadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c9bfb0" stop-opacity="0.55"/>
+      <stop offset="65%" stop-color="#d8cfc2" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#f3ede2" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Gradiente madeira bambu natural -->
+    <linearGradient id="bambooTop" x1="120" y1="360" x2="680" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e7be87"/>
+      <stop offset="35%" stop-color="#dfae6f"/>
+      <stop offset="70%" stop-color="#d49b56"/>
+      <stop offset="100%" stop-color="#c28540"/>
+    </linearGradient>
+    <linearGradient id="bambooFront" x1="120" y1="410" x2="680" y2="465" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c88d48"/>
+      <stop offset="50%" stop-color="#b57935"/>
+      <stop offset="100%" stop-color="#9c6426"/>
+    </linearGradient>
+    <linearGradient id="bambooLegL" x1="120" y1="410" x2="185" y2="590" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d49b56"/>
+      <stop offset="100%" stop-color="#9e6627"/>
+    </linearGradient>
+    <linearGradient id="bambooLegR" x1="620" y1="410" x2="680" y2="590" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c68b45"/>
+      <stop offset="100%" stop-color="#8b561d"/>
+    </linearGradient>
+    <!-- Aço Inox Escovado (Externa e Interna) -->
+    <linearGradient id="steelRim" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="25%" stop-color="#ffffff"/>
+      <stop offset="55%" stop-color="#94a3b8"/>
+      <stop offset="85%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <linearGradient id="steelBowlBody" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="22%" stop-color="#f8fafc"/>
+      <stop offset="48%" stop-color="#cbd5e1"/>
+      <stop offset="78%" stop-color="#64748b"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+    <linearGradient id="steelInside" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="38%" stop-color="#cbd5e1"/>
+      <stop offset="65%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo de Estúdio -->
+  <rect width="800" height="800" fill="url(#studioBg)"/>
+
+  <!-- Sombra realista no piso -->
+  <ellipse cx="400" cy="585" rx="310" ry="48" fill="url(#floorShadow)"/>
+
+  <!-- Tigela 1 (Esquerda) - Corpo inferior visível sob a base -->
+  <path d="M195 435h180l-18 82c-5 24-26 40-52 40h-40c-26 0-47-16-52-40l-18-82z" fill="url(#steelBowlBody)"/>
+  <!-- Tigela 2 (Direita) - Corpo inferior visível sob a base -->
+  <path d="M425 435h180l-18 82c-5 24-26 40-52 40h-40c-26 0-47-16-52-40l-18-82z" fill="url(#steelBowlBody)"/>
+
+  <!-- Pernas laterais inclinadas de Bambu -->
+  <path d="M138 395l34 10-28 175h-36l30-185z" fill="url(#bambooLegL)"/>
+  <path d="M172 405l18 8-24 167h-22l28-175z" fill="#85511a" opacity="0.7"/>
+
+  <path d="M662 395l-34 10 28 175h36l-30-185z" fill="url(#bambooLegR)"/>
+  <path d="M628 405l-18 8 24 167h22l-28-175z" fill="#784715" opacity="0.75"/>
+
+  <!-- Tampo Superior da Mesa de Bambu (Perspectiva 3D) -->
+  <path d="M162 355h476c14 0 25 8 29 20l18 46H115l18-46c4-12 15-20 29-20z" fill="url(#bambooTop)"/>
+  <!-- Veios sutis da madeira no tampo -->
+  <path d="M180 375c120-6 280-6 440 0" stroke="#c28540" stroke-width="2" opacity="0.45"/>
+  <path d="M155 398c150-5 330-5 490 0" stroke="#b57935" stroke-width="2" opacity="0.45"/>
+
+  <!-- Borda Frontal Espessa de Bambu -->
+  <rect x="115" y="416" width="570" height="36" rx="10" fill="url(#bambooFront)"/>
+  <line x1="125" y1="422" x2="675" y2="422" stroke="#f3d2a2" stroke-width="2" opacity="0.5"/>
+
+  <!-- Plaquinha Minimalista Metálica Dourada Frontal -->
+  <rect x="364" y="427" width="72" height="14" rx="4" fill="#d4af37" stroke="#fef08a" stroke-width="1"/>
+
+  <!-- Tigela Inox Esquerda (Borda Superior e Interior) -->
+  <ellipse cx="285" cy="388" rx="98" ry="30" fill="url(#steelRim)"/>
+  <ellipse cx="285" cy="386" rx="86" ry="24" fill="url(#steelInside)"/>
+  <ellipse cx="285" cy="392" rx="74" ry="16" fill="#94a3b8" opacity="0.45"/>
+
+  <!-- Tigela Inox Direita (Borda Superior e Interior) -->
+  <ellipse cx="515" cy="388" rx="98" ry="30" fill="url(#steelRim)"/>
+  <ellipse cx="515" cy="386" rx="86" ry="24" fill="url(#steelInside)"/>
+  <ellipse cx="515" cy="392" rx="74" ry="16" fill="#94a3b8" opacity="0.45"/>
 </svg>
