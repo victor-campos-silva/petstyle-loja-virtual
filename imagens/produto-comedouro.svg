@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="24" fill="#ecfdf5"/>
+  <circle cx="75" cy="75" r="42" fill="#d1fae5"/>
+  <circle cx="330" cy="225" r="52" fill="#a7f3d0" opacity="0.5"/>
+  <!-- Sombra -->
+  <ellipse cx="200" cy="238" rx="145" ry="18" fill="#6ee7b7" opacity="0.45"/>
+  <!-- Suporte de bambu elevado -->
+  <path d="M75 155h250l16 72h-22l-12-46H93l-12 46H59l16-72z" fill="#d97706"/>
+  <rect x="70" y="146" width="260" height="22" rx="10" fill="#f59e0b"/>
+  <!-- Tigela 1 (Inox) -->
+  <path d="M100 146h80l-10 38c-3 10-12 16-22 16h-16c-10 0-19-6-22-16l-10-38z" fill="#94a3b8"/>
+  <ellipse cx="140" cy="146" rx="42" ry="10" fill="#cbd5e1" stroke="#64748b" stroke-width="3"/>
+  <!-- Ração na tigela 1 -->
+  <circle cx="130" cy="145" r="5" fill="#92400e"/>
+  <circle cx="142" cy="143" r="5.5" fill="#78350f"/>
+  <circle cx="152" cy="146" r="5" fill="#92400e"/>
+  <circle cx="137" cy="148" r="5" fill="#b45309"/>
+  <!-- Tigela 2 (Inox - Água) -->
+  <path d="M220 146h80l-10 38c-3 10-12 16-22 16h-16c-10 0-19-6-22-16l-10-38z" fill="#94a3b8"/>
+  <ellipse cx="260" cy="146" rx="42" ry="10" fill="#cbd5e1" stroke="#64748b" stroke-width="3"/>
+  <ellipse cx="260" cy="147" rx="34" ry="6" fill="#38bdf8" opacity="0.75"/>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="24" fill="#eef2ff"/>
+  <circle cx="320" cy="70" r="45" fill="#e0e7ff"/>
+  <circle cx="80" cy="230" r="50" fill="#c7d2fe" opacity="0.55"/>
+  <!-- Sombra -->
+  <ellipse cx="200" cy="252" rx="105" ry="15" fill="#a5b4fc" opacity="0.45"/>
+  <!-- Mangas do moletom -->
+  <path d="M135 110l-48 48 24 26 36-34z" fill="#4f46e5"/>
+  <path d="M265 110l48 48-24 26-36-34z" fill="#4f46e5"/>
+  <!-- Corpo do moletom -->
+  <rect x="130" y="95" width="140" height="140" rx="26" fill="#6366f1"/>
+  <!-- Capuz -->
+  <path d="M150 98c0-28 100-28 100 0v14H150V98z" fill="#4338ca"/>
+  <!-- Orelhinhas no capuz -->
+  <circle cx="162" cy="76" r="11" fill="#4338ca"/>
+  <circle cx="238" cy="76" r="11" fill="#4338ca"/>
+  <circle cx="162" cy="76" r="6" fill="#f472b6"/>
+  <circle cx="238" cy="76" r="6" fill="#f472b6"/>
+  <!-- Bolso canguru e barra -->
+  <path d="M155 182h90l10 32H145l10-32z" fill="#4f46e5"/>
+  <rect x="135" y="220" width="130" height="16" rx="8" fill="#3730a3"/>
+  <!-- Estampa patinha central -->
+  <circle cx="200" cy="150" r="20" fill="#fde047"/>
+  <circle cx="200" cy="153" r="7" fill="#3730a3"/>
+  <circle cx="192" cy="143" r="3.5" fill="#3730a3"/>
+  <circle cx="200" cy="140" r="3.5" fill="#3730a3"/>
+  <circle cx="208" cy="143" r="3.5" fill="#3730a3"/>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="24" fill="#fff7ed"/>
+  <circle cx="330" cy="60" r="45" fill="#ffedd5"/>
+  <circle cx="70" cy="240" r="55" fill="#fed7aa" opacity="0.5"/>
+  <!-- Sombra -->
+  <ellipse cx="200" cy="235" rx="135" ry="22" fill="#fdba74" opacity="0.45"/>
+  <!-- Base externa da cama ortopédica -->
+  <rect x="75" y="145" width="250" height="82" rx="41" fill="#ea580c"/>
+  <rect x="85" y="132" width="230" height="75" rx="37" fill="#f97316"/>
+  <!-- Almofada interna fofa -->
+  <ellipse cx="200" cy="158" rx="95" ry="32" fill="#fffbeb"/>
+  <path d="M130 156c20 10 50 14 70 14s50-4 70-14" stroke="#fed7aa" stroke-width="4" stroke-linecap="round"/>
+  <!-- Travesseirinho em formato de osso -->
+  <g transform="translate(215, 110) rotate(-12)">
+    <circle cx="12" cy="12" r="10" fill="#fde047"/>
+    <circle cx="12" cy="26" r="10" fill="#fde047"/>
+    <circle cx="62" cy="12" r="10" fill="#fde047"/>
+    <circle cx="62" cy="26" r="10" fill="#fde047"/>
+    <rect x="12" y="11" width="50" height="16" fill="#fde047"/>
+  </g>
+  <!-- Etiqueta frontal Pet&Style -->
+  <rect x="172" y="192" width="56" height="20" rx="6" fill="#1e293b"/>
+  <text x="200" y="206" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#ffffff">PET&amp;STYLE</text>
+</svg>

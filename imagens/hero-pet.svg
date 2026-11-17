@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" fill="none">
+  <defs>
+    <linearGradient id="bgBlob" x1="60" y1="40" x2="580" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffedd5"/>
+      <stop offset="50%" stop-color="#fce7f3"/>
+      <stop offset="100%" stop-color="#e0e7ff"/>
+    </linearGradient>
+    <linearGradient id="orangePink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <linearGradient id="coatGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#1e293b" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Fundo decorativo -->
+  <rect x="40" y="30" width="560" height="450" rx="48" fill="url(#bgBlob)"/>
+  <circle cx="110" cy="95" r="36" fill="#fdba74" opacity="0.35"/>
+  <circle cx="530" cy="110" r="52" fill="#f9a8d4" opacity="0.3"/>
+  <circle cx="515" cy="400" r="44" fill="#a5b4fc" opacity="0.35"/>
+
+  <!-- Tapete/Base -->
+  <ellipse cx="320" cy="435" rx="220" ry="26" fill="#fed7aa" opacity="0.7"/>
+
+  <!-- Cachorro estiloso (Golden/Corgi) -->
+  <g filter="url(#softShadow)">
+    <!-- Rabo -->
+    <path d="M180 345c-32-12-46-45-30-65 12-15 34 2 40 28" fill="#d97706"/>
+    <!-- Corpo -->
+    <rect x="185" y="255" width="165" height="165" rx="68" fill="url(#coatGrad)"/>
+    <!-- Peito branco -->
+    <path d="M230 275c0-10 75-10 75 0v95c0 24-75 24-75 0v-95z" fill="#fffbeb"/>
+    <!-- Moletom/Bandana Pet&Style -->
+    <path d="M195 275h145l-25 48c-26 14-69 14-95 0l-25-48z" fill="url(#orangePink)"/>
+    <circle cx="267" cy="304" r="9" fill="#fde047"/>
+    <!-- Orelha esquerda -->
+    <path d="M195 165c-28 12-42 56-24 78 14 16 38-4 44-36" fill="#b45309"/>
+    <!-- Orelha direita -->
+    <path d="M335 165c28 12 42 56 24 78-14 16-38-4-44-36" fill="#b45309"/>
+    <!-- Cabeça -->
+    <rect x="195" y="135" width="145" height="135" rx="62" fill="url(#coatGrad)"/>
+    <!-- Focinho -->
+    <ellipse cx="267" cy="222" rx="38" ry="28" fill="#fffbeb"/>
+    <ellipse cx="267" cy="210" rx="14" ry="10" fill="#1e293b"/>
+    <!-- Sorriso -->
+    <path d="M250 226c8 10 26 10 34 0" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <path d="M261 232c0 12 12 12 12 0" fill="#fb7185"/>
+    <!-- Óculos de sol estilosos -->
+    <rect x="206" y="168" width="54" height="34" rx="10" fill="#1e293b" stroke="#fde047" stroke-width="4"/>
+    <rect x="274" y="168" width="54" height="34" rx="10" fill="#1e293b" stroke="#fde047" stroke-width="4"/>
+    <line x1="260" y1="182" x2="274" y2="182" stroke="#fde047" stroke-width="4"/>
+    <line x1="216" y1="176" x2="230" y2="192" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+    <line x1="284" y1="176" x2="298" y2="192" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+    <!-- Patas dianteiras -->
+    <rect x="210" y="375" width="36" height="58" rx="18" fill="#fffbeb"/>
+    <rect x="290" y="375" width="36" height="58" rx="18" fill="#fffbeb"/>
+  </g>
+
+  <!-- Gatinho fashion ao lado -->
+  <g filter="url(#softShadow)">
+    <!-- Rabo do gato -->
+    <path d="M485 375c35-8 48-48 28-72-12-14-26 2-20 26" stroke="#6366f1" stroke-width="16" stroke-linecap="round" fill="none"/>
+    <!-- Corpo do gato -->
+    <rect x="375" y="285" width="115" height="135" rx="52" fill="#818cf8"/>
+    <ellipse cx="432" cy="355" rx="32" ry="42" fill="#e0e7ff"/>
+    <!-- Orelhas do gato -->
+    <polygon points="382,235 390,175 428,215" fill="#6366f1"/>
+    <polygon points="390,225 395,188 420,215" fill="#f472b6"/>
+    <polygon points="482,235 474,175 436,215" fill="#6366f1"/>
+    <polygon points="474,225 469,188 444,215" fill="#f472b6"/>
+    <!-- Cabeça do gato -->
+    <rect x="377" y="205" width="110" height="95" rx="46" fill="#818cf8"/>
+    <!-- Olhos do gato -->
+    <circle cx="410" cy="248" r="8" fill="#1e293b"/>
+    <circle cx="454" cy="248" r="8" fill="#1e293b"/>
+    <circle cx="413" cy="245" r="3" fill="#ffffff"/>
+    <circle cx="457" cy="245" r="3" fill="#ffffff"/>
+    <!-- Focinho gato -->
+    <polygon points="426,260 438,260 432,268" fill="#f472b6"/>
+    <path d="M420 272c5 5 19 5 24 0" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    <!-- Coleira de pérolas e pingente coração -->
+    <path d="M390 296c24 12 60 12 84 0" stroke="#ec4899" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="432" cy="308" r="9" fill="#fde047"/>
+    <!-- Patas do gato -->
+    <rect x="395" y="388" width="28" height="44" rx="14" fill="#e0e7ff"/>
+    <rect x="442" y="388" width="28" height="44" rx="14" fill="#e0e7ff"/>
+  </g>
+
+  <!-- Card flutuante superior esquerdo -->
+  <g filter="url(#softShadow)">
+    <rect x="58" y="68" width="175" height="66" rx="18" fill="#ffffff"/>
+    <circle cx="92" cy="101" r="18" fill="#ffedd5"/>
+    <path d="M92 91l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" fill="#f97316"/>
+    <text x="120" y="97" font-family="sans-serif" font-size="13" font-weight="bold" fill="#0f172a">Estilo 5 Estrelas</text>
+    <text x="120" y="115" font-family="sans-serif" font-size="11" fill="#64748b">+12 mil pets felizes</text>
+  </g>
+
+  <!-- Card flutuante inferior direito -->
+  <g filter="url(#softShadow)">
+    <rect x="425" y="78" width="165" height="64" rx="18" fill="#ffffff"/>
+    <circle cx="458" cy="110" r="18" fill="#fce7f3"/>
+    <path d="M458 119s-9-5.5-9-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-9 11-9 11z" fill="#ec4899"/>
+    <text x="485" y="106" font-family="sans-serif" font-size="13" font-weight="bold" fill="#0f172a">100% Conforto</text>
+    <text x="485" y="124" font-family="sans-serif" font-size="11" fill="#64748b">Design Hipoalergênico</text>
+  </g>
+</svg>

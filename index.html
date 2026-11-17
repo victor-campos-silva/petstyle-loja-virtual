@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pet&Style - Loja virtual especializada em moda, conforto e acessórios premium para cães e gatos.">
+  <title>Pet&amp;Style | Moda, Conforto e Estilo para o seu Pet</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Configuração customizada do Tailwind via CDN -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', ' ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
+            },
+            accent: {
+              500: '#ec4899',
+              600: '#db2777',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased selection:bg-orange-500 selection:text-white">
+
+  <!-- Barra de aviso topo (Mobile-first) -->
+  <div class="bg-gradient-to-r from-orange-500 via-pink-500 to-indigo-600 px-4 py-2 text-center text-xs sm:text-sm font-medium text-white">
+    <p class="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
+      <span class="inline-block rounded-full bg-white/20 px-2.5 py-0.5 font-bold uppercase tracking-wider text-[10px] sm:text-xs">Frete Grátis</span>
+      <span>Em compras acima de R$ 149 para todo o Brasil + <strong>10% OFF</strong> na primeira compra com o cupom <code class="rounded bg-black/20 px-1.5 py-0.5 font-mono font-bold">PETSTYLE10</code></span>
+    </p>
+  </div>
+
+  <!-- ==========================================
+       1. HEADER (Logotipo + Menu com Flexbox)
+       ========================================== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+
+        <!-- Logotipo Fictício Pet&Style -->
+        <a href="#inicio" class="flex items-center gap-3 group focus:outline-none">
+          <img src="imagens/logo.svg" alt="Logotipo Pet&Style" class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl shadow-md group-hover:scale-105 transition-transform">
+          <div class="flex flex-col">
+            <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 leading-none">
+              Pet<span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500">&amp;Style</span>
+            </span>
+            <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-slate-400 mt-0.5">
+              Boutique Pet
+            </span>
+          </div>
+        </a>
+
+        <!-- Menu de Navegação Desktop (Flexbox) -->
+        <nav aria-label="Menu Principal" class="hidden md:flex items-center gap-6 lg:gap-8">
+          <a href="#inicio" class="text-sm lg:text-base font-semibold text-slate-700 hover:text-orange-500 transition-colors">Início</a>
+          <a href="#produtos" class="text-sm lg:text-base font-semibold text-slate-700 hover:text-orange-500 transition-colors">Produtos</a>
+          <a href="#depoimentos" class="text-sm lg:text-base font-semibold text-slate-700 hover:text-orange-500 transition-colors">Depoimentos</a>
+          <a href="#contato" class="text-sm lg:text-base font-semibold text-slate-700 hover:text-orange-500 transition-colors">Contato</a>
+        </nav>
+
+        <!-- Ações do Header (Sacola + CTA + Botão Mobile) -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Botão Sacola / Carrinho -->
+          <button id="btnCarrinho" type="button" aria-label="Ver sacola de compras" class="relative inline-flex items-center gap-2 rounded-full bg-orange-50 border border-orange-200/80 px-3 sm:px-4 py-2 text-sm font-semibold text-orange-600 hover:bg-orange-100 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <span class="hidden sm:inline">Sacola</span>
+            <span id="contadorCarrinho" class="inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-orange-500 rounded-full">0</span>
+          </button>
+
+          <!-- Botão CTA visível a partir de lg: -->
+          <a href="#produtos" class="hidden lg:inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-orange-500 transition-colors">
+            Ver Ofertas
+          </a>
+
+          <!-- Botão Menu Mobile (Hambúrguer) -->
+          <button id="btnMenuMobile" type="button" aria-expanded="false" aria-controls="menuMobile" aria-label="Abrir menu de navegação" class="md:hidden inline-flex items-center justify-center p-2 rounded-xl text-slate-700 hover:bg-slate-100 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500">
+            <svg id="iconeMenuAbrir" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Menu Mobile Retrátil (Flexbox Coluna) -->
+    <div id="menuMobile" class="hidden md:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-5 shadow-lg">
+      <nav class="flex flex-col space-y-2">
+        <a href="#inicio" class="link-mobile rounded-xl px-3 py-2.5 text-base font-semibold text-slate-800 hover:bg-orange-50 hover:text-orange-600 transition">Início</a>
+        <a href="#produtos" class="link-mobile rounded-xl px-3 py-2.5 text-base font-semibold text-slate-800 hover:bg-orange-50 hover:text-orange-600 transition">Produtos</a>
+        <a href="#depoimentos" class="link-mobile rounded-xl px-3 py-2.5 text-base font-semibold text-slate-800 hover:bg-orange-50 hover:text-orange-600 transition">Depoimentos</a>
+        <a href="#contato" class="link-mobile rounded-xl px-3 py-2.5 text-base font-semibold text-slate-800 hover:bg-orange-50 hover:text-orange-600 transition">Contato</a>
+        <a href="#produtos" class="link-mobile mt-2 inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-orange-500 to-pink-500 px-4 py-3 text-center text-base font-bold text-white shadow-md">
+          Explorar Coleção Pet&amp;Style
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         2. SEÇÃO HERO (Chamada Principal + Imagem)
+         ========================================== -->
+    <section id="inicio" class="relative overflow-hidden bg-gradient-to-b from-orange-50/70 via-white to-slate-50 pt-8 pb-14 sm:py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Layout Mobile-First: Coluna no celular, Linha no desktop (lg:flex-row) -->
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-12">
+
+          <!-- Coluna de Texto (Chamada Principal) -->
+          <div class="w-full lg:w-1/2 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 rounded-full bg-orange-100/90 border border-orange-200 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-orange-700 mb-5">
+              <span class="flex h-2 w-2 rounded-full bg-orange-500 animate-ping"></span>
+              <span>Nova Coleção Outono/Inverno Pet&amp;Style</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+              Muito mais estilo, <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-indigo-600">mimo e conforto</span> para o seu melhor amigo.
+            </h1>
+
+            <p class="mt-4 sm:mt-6 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              Na <strong>Pet&amp;Style</strong>, criamos camas ortopédicas, roupinhas autorais, coleiras ergonômicas e comedouros elevados com design exclusivo e materiais hipoalergênicos para cães e gatos.
+            </p>
+
+            <!-- Botões de Ação (Empilhados no mobile, lado a lado a partir de sm:) -->
+            <div class="mt-7 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-4">
+              <a href="#produtos" class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 px-7 py-4 text-base font-bold text-white shadow-lg shadow-orange-500/25 hover:from-orange-600 hover:to-pink-600 transition-all">
+                <span>Conhecer Produtos</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+              <a href="#contato" class="inline-flex items-center justify-center gap-2 rounded-full bg-white border-2 border-slate-200 px-7 py-4 text-base font-bold text-slate-700 hover:border-orange-400 hover:text-orange-600 transition-all">
+                <span>Falar com Consultor</span>
+              </a>
+            </div>
+
+            <!-- Indicadores de Confiança (Grid Responsivo) -->
+            <div class="mt-10 pt-8 border-t border-slate-200/80 grid grid-cols-3 gap-4 text-center lg:text-left">
+              <div>
+                <p class="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900">+12 mil</p>
+                <p class="text-xs sm:text-sm font-medium text-slate-500">Pets vestidos com estilo</p>
+              </div>
+              <div>
+                <p class="text-xl sm:text-2xl md:text-3xl font-extrabold text-orange-500">4.9 ★</p>
+                <p class="text-xs sm:text-sm font-medium text-slate-500">Avaliação média dos tutores</p>
+              </div>
+              <div>
+                <p class="text-xl sm:text-2xl md:text-3xl font-extrabold text-pink-500">100%</p>
+                <p class="text-xs sm:text-sm font-medium text-slate-500">Tecidos hipoalergênicos</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coluna da Imagem de Destaque -->
+          <div class="w-full lg:w-1/2 flex justify-center">
+            <div class="relative w-full max-w-md sm:max-w-lg lg:max-w-none">
+              <div class="absolute -inset-2 rounded-[2.5rem] bg-gradient-to-tr from-orange-400/20 via-pink-400/20 to-indigo-400/20 blur-2xl"></div>
+              <img
+                src="imagens/hero-pet.svg"
+                alt="Cachorro e gato estilosos usando acessórios exclusivos da loja Pet&Style"
+                class="relative w-full h-auto rounded-3xl shadow-xl border border-white/80 bg-white"
+              >
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Faixa de Diferenciais em Grid (1 col mobile, 2 cols sm:, 4 cols lg:) -->
+        <div class="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="flex items-center gap-4 rounded-2xl bg-white p-4 shadow-sm border border-slate-100">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-sm font-bold text-slate-900">Envio Expresso em 24h</h2>
+              <p class="text-xs text-slate-500">Rastreio em tempo real para todo o país</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 rounded-2xl bg-white p-4 shadow-sm border border-slate-100">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-pink-100 text-pink-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-sm font-bold text-slate-900">Aprovado por Veterinários</h2>
+              <p class="text-xs text-slate-500">Ergonomia e materiais atóxicos seguros</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 rounded-2xl bg-white p-4 shadow-sm border border-slate-100">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-sm font-bold text-slate-900">1ª Troca Grátis</h2>
+              <p class="text-xs text-slate-500">Não serviu? Trocamos o tamanho sem custo</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 rounded-2xl bg-white p-4 shadow-sm border border-slate-100">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-sm font-bold text-slate-900">Até 6x Sem Juros</h2>
+              <p class="text-xs text-slate-500">Ou 5% de desconto adicional no PIX</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         3. SEÇÃO PRODUTOS (Grid Responsivo Mobile-First)
+         ========================================== -->
+    <section id="produtos" class="py-14 sm:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Cabeçalho da Seção com Flexbox -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-4 text-center md:text-left">
+          <div>
+            <span class="inline-block text-xs sm:text-sm font-bold uppercase tracking-widest text-orange-600">
+              Destaques da Loja
+            </span>
+            <h2 class="mt-2 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
+              Produtos Favoritos dos Pets
+            </h2>
+            <p class="mt-2 text-sm sm:text-base text-slate-600 max-w-xl">
+              Peças selecionadas que unem design contemporâneo, durabilidade e máximo bem-estar para o dia a dia do seu pet.
+            </p>
+          </div>
+
+          <!-- Filtros visuais em Flexbox -->
+          <div class="flex flex-wrap items-center justify-center md:justify-end gap-2">
+            <span class="rounded-full bg-slate-900 px-4 py-1.5 text-xs sm:text-sm font-semibold text-white">Todos (4)</span>
+            <span class="rounded-full bg-slate-100 px-4 py-1.5 text-xs sm:text-sm font-semibold text-slate-600">Conforto</span>
+            <span class="rounded-full bg-slate-100 px-4 py-1.5 text-xs sm:text-sm font-semibold text-slate-600">Passeio &amp; Moda</span>
+            <span class="rounded-full bg-slate-100 px-4 py-1.5 text-xs sm:text-sm font-semibold text-slate-600">Alimentação</span>
+          </div>
+        </div>
+
+        <!-- Grid de Produtos: 1 coluna no mobile (grid-cols-1), 2 no tablet (sm:grid-cols-2 / md:grid-cols-2) e 4 no desktop (lg:grid-cols-4) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+
+          <!-- Card Produto 1 -->
+          <article class="group flex flex-col justify-between rounded-3xl bg-slate-50 border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div>
+              <div class="relative overflow-hidden bg-orange-50 p-4">
+                <span class="absolute top-3 left-3 z-10 rounded-full bg-orange-500 px-3 py-1 text-xs font-bold text-white shadow">
+                  Mais Vendido
+                </span>
+                <img
+                  src="imagens/produto-cama.svg"
+                  alt="Cama Nuvem Ortopédica Pet&Style"
+                  class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300"
+                >
+              </div>
+
+              <div class="p-5 sm:p-6">
+                <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
+                  <span class="text-orange-600 uppercase tracking-wider">Linha Descanso</span>
+                  <span class="flex items-center gap-1 text-amber-500 font-bold">★ 4.9 (128)</span>
+                </div>
+                <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-orange-600 transition-colors">
+                  Cama Nuvem Ortopédica
+                </h3>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                  Espuma viscoelástica de alta densidade com capa impermeável removível e toque ultra macio.
+                </p>
+              </div>
+            </div>
+
+            <div class="px-5 pb-5 sm:px-6 sm:pb-6 pt-2 border-t border-slate-200/60 flex items-center justify-between gap-3">
+              <div>
+                <span class="block text-xs text-slate-400 line-through">R$ 289,90</span>
+                <span class="text-xl font-extrabold text-slate-900">R$ 229,90</span>
+              </div>
+              <button
+                type="button"
+                data-produto="Cama Nuvem Ortopédica"
+                class="btn-comprar inline-flex items-center gap-1.5 rounded-xl bg-orange-500 px-4 py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-orange-600 active:scale-95 transition"
+              >
+                <span>Adicionar</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Card Produto 2 -->
+          <article class="group flex flex-col justify-between rounded-3xl bg-slate-50 border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div>
+              <div class="relative overflow-hidden bg-pink-50 p-4">
+                <span class="absolute top-3 left-3 z-10 rounded-full bg-pink-500 px-3 py-1 text-xs font-bold text-white shadow">
+                  Lançamento
+                </span>
+                <img
+                  src="imagens/produto-coleira.svg"
+                  alt="Kit Peitoral e Guia Couro Eco"
+                  class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300"
+                >
+              </div>
+
+              <div class="p-5 sm:p-6">
+                <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
+                  <span class="text-pink-600 uppercase tracking-wider">Passeio Seguro</span>
+                  <span class="flex items-center gap-1 text-amber-500 font-bold">★ 5.0 (94)</span>
+                </div>
+                <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-pink-600 transition-colors">
+                  Kit Coleira &amp; Guia EcoLux
+                </h3>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                  Couro vegano acolchoado com fecho em metal dourado antioxidante e medalha de identificação inclusa.
+                </p>
+              </div>
+            </div>
+
+            <div class="px-5 pb-5 sm:px-6 sm:pb-6 pt-2 border-t border-slate-200/60 flex items-center justify-between gap-3">
+              <div>
+                <span class="block text-xs text-slate-400 line-through">R$ 159,90</span>
+                <span class="text-xl font-extrabold text-slate-900">R$ 129,90</span>
+              </div>
+              <button
+                type="button"
+                data-produto="Kit Coleira & Guia EcoLux"
+                class="btn-comprar inline-flex items-center gap-1.5 rounded-xl bg-orange-500 px-4 py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-orange-600 active:scale-95 transition"
+              >
+                <span>Adicionar</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Card Produto 3 -->
+          <article class="group flex flex-col justify-between rounded-3xl bg-slate-50 border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div>
+              <div class="relative overflow-hidden bg-indigo-50 p-4">
+                <span class="absolute top-3 left-3 z-10 rounded-full bg-indigo-600 px-3 py-1 text-xs font-bold text-white shadow">
+                  Inverno 2026
+                </span>
+                <img
+                  src="imagens/produto-moletom.svg"
+                  alt="Moletom Streetwear Pet com Capuz"
+                  class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300"
+                >
+              </div>
+
+              <div class="p-5 sm:p-6">
+                <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
+                  <span class="text-indigo-600 uppercase tracking-wider">Moda Pet</span>
+                  <span class="flex items-center gap-1 text-amber-500 font-bold">★ 4.8 (76)</span>
+                </div>
+                <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                  Moletom Streetwear Soft
+                </h3>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                  Algodão egípcio flanelado com capuz anatômico, abertura para guia e modelagem que não prende os movimentos.
+                </p>
+              </div>
+            </div>
+
+            <div class="px-5 pb-5 sm:px-6 sm:pb-6 pt-2 border-t border-slate-200/60 flex items-center justify-between gap-3">
+              <div>
+                <span class="block text-xs text-slate-400 line-through">R$ 139,90</span>
+                <span class="text-xl font-extrabold text-slate-900">R$ 109,90</span>
+              </div>
+              <button
+                type="button"
+                data-produto="Moletom Streetwear Soft"
+                class="btn-comprar inline-flex items-center gap-1.5 rounded-xl bg-orange-500 px-4 py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-orange-600 active:scale-95 transition"
+              >
+                <span>Adicionar</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Card Produto 4 -->
+          <article class="group flex flex-col justify-between rounded-3xl bg-slate-50 border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div>
+              <div class="relative overflow-hidden bg-emerald-50 p-4">
+                <span class="absolute top-3 left-3 z-10 rounded-full bg-emerald-600 px-3 py-1 text-xs font-bold text-white shadow">
+                  Eco-Friendly
+                </span>
+                <img
+                  src="imagens/produto-comedouro.svg"
+                  alt="Comedouro Duplo Elevado em Bambu e Inox"
+                  class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300"
+                >
+              </div>
+
+              <div class="p-5 sm:p-6">
+                <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
+                  <span class="text-emerald-600 uppercase tracking-wider">Alimentação</span>
+                  <span class="flex items-center gap-1 text-amber-500 font-bold">★ 4.9 (112)</span>
+                </div>
+                <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                  Comedouro Duplo Bambu
+                </h3>
+                <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                  Base elevada ergonômica em bambu tratado que protege a coluna do pet, acompanhada de 2 tigelas em aço inox.
+                </p>
+              </div>
+            </div>
+
+            <div class="px-5 pb-5 sm:px-6 sm:pb-6 pt-2 border-t border-slate-200/60 flex items-center justify-between gap-3">
+              <div>
+                <span class="block text-xs text-slate-400 line-through">R$ 199,90</span>
+                <span class="text-xl font-extrabold text-slate-900">R$ 164,90</span>
+              </div>
+              <button
+                type="button"
+                data-produto="Comedouro Duplo Bambu"
+                class="btn-comprar inline-flex items-center gap-1.5 rounded-xl bg-orange-500 px-4 py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-orange-600 active:scale-95 transition"
+              >
+                <span>Adicionar</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. SEÇÃO DEPOIMENTOS (Clientes Fictícios)
+         ========================================== -->
+    <section id="depoimentos" class="py-14 sm:py-20 bg-gradient-to-b from-slate-50 to-orange-50/40 border-y border-slate-200/70">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Título da Seção -->
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <span class="inline-block text-xs sm:text-sm font-bold uppercase tracking-widest text-pink-600">
+            Quem Compra, Recomenda
+          </span>
+          <h2 class="mt-2 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
+            O que dizem os tutores apaixonados
+          </h2>
+          <p class="mt-3 text-sm sm:text-base text-slate-600">
+            Mais de 12.000 cães e gatos já desfilam com o conforto e a qualidade da <strong>Pet&amp;Style</strong>.
+          </p>
+        </div>
+
+        <!-- Grid de Depoimentos: 1 col no mobile, 2 cols em md: e 3 cols em lg: -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
+          <!-- Depoimento 1 -->
+          <blockquote class="flex flex-col justify-between rounded-3xl bg-white p-6 sm:p-8 shadow-sm border border-slate-100">
+            <div>
+              <div class="flex items-center gap-1 text-amber-400 text-lg mb-4" aria-label="5 de 5 estrelas">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <p class="text-slate-700 text-sm sm:text-base italic leading-relaxed">
+                "A Cama Nuvem Ortopédica transformou as noites do Thor! Ele tem 9 anos e sentia desconforto nas articulações, mas agora dorme profundamente a noite inteira. Além de linda na sala, a capa sai fácil para lavar."
+              </p>
+            </div>
+
+            <footer class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="flex h-11 w-11 items-center justify-center rounded-full bg-orange-100 font-extrabold text-orange-600 text-sm">
+                  MC
+                </div>
+                <div>
+                  <cite class="not-italic text-sm font-bold text-slate-900 block">Mariana Costa</cite>
+                  <span class="text-xs text-slate-500">Tutora do Thor (Golden Retriever)</span>
+                </div>
+              </div>
+              <span class="rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700">
+                ✓ Verificado
+              </span>
+            </footer>
+          </blockquote>
+
+          <!-- Depoimento 2 -->
+          <blockquote class="flex flex-col justify-between rounded-3xl bg-white p-6 sm:p-8 shadow-sm border border-slate-100">
+            <div>
+              <div class="flex items-center gap-1 text-amber-400 text-lg mb-4" aria-label="5 de 5 estrelas">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <p class="text-slate-700 text-sm sm:text-base italic leading-relaxed">
+                "Comprei o Comedouro Duplo de Bambu e o Moletom Streetwear para a minha gatinha Luna. A qualidade do acabamento me surpreendeu demais, parece peça de boutique de luxo e chegou em menos de 48 horas!"
+              </p>
+            </div>
+
+            <footer class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="flex h-11 w-11 items-center justify-center rounded-full bg-pink-100 font-extrabold text-pink-600 text-sm">
+                  RM
+                </div>
+                <div>
+                  <cite class="not-italic text-sm font-bold text-slate-900 block">Rafael Mendes</cite>
+                  <span class="text-xs text-slate-500">Tutor da Luna (Siamês)</span>
+                </div>
+              </div>
+              <span class="rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700">
+                ✓ Verificado
+              </span>
+            </footer>
+          </blockquote>
+
+          <!-- Depoimento 3 -->
+          <blockquote class="flex flex-col justify-between rounded-3xl bg-white p-6 sm:p-8 shadow-sm border border-slate-100 md:col-span-2 lg:col-span-1">
+            <div>
+              <div class="flex items-center gap-1 text-amber-400 text-lg mb-4" aria-label="5 de 5 estrelas">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <p class="text-slate-700 text-sm sm:text-base italic leading-relaxed">
+                "O Kit Coleira e Guia EcoLux é simplesmente perfeito! Não machuca o pescoço do Bento durante os passeios no parque e todo mundo pergunta onde comprei. Atendimento pelo WhatsApp também nota mil!"
+              </p>
+            </div>
+
+            <footer class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="flex h-11 w-11 items-center justify-center rounded-full bg-indigo-100 font-extrabold text-indigo-600 text-sm">
+                  CR
+                </div>
+                <div>
+                  <cite class="not-italic text-sm font-bold text-slate-900 block">Camila Rocha</cite>
+                  <span class="text-xs text-slate-500">Tutora do Bento (Bulldog Francês)</span>
+                </div>
+              </div>
+              <span class="rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700">
+                ✓ Verificado
+              </span>
+            </footer>
+          </blockquote>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. SEÇÃO CONTATO (E-mail, Telefone e Formulário)
+         ========================================== -->
+    <section id="contato" class="py-14 sm:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+
+          <!-- Coluna de Informações de Contato (5 colunas no desktop) -->
+          <div class="lg:col-span-5">
+            <span class="inline-block text-xs sm:text-sm font-bold uppercase tracking-widest text-orange-600">
+              Atendimento Personalizado
+            </span>
+            <h2 class="mt-2 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
+              Fale com a equipe Pet&amp;Style
+            </h2>
+            <p class="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+              Tem dúvida sobre a tabela de medidas para a raça do seu pet ou quer acompanhar seu pedido? Entre em contato pelos nossos canais ou envie uma mensagem no formulário.
+            </p>
+
+            <!-- Cards de Contato (E-mail, Telefone, Localização) -->
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+
+              <!-- E-mail -->
+              <div class="flex items-start gap-4 rounded-2xl bg-slate-50 p-4 border border-slate-200/70">
+                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-white shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">E-mail de Atendimento</h3>
+                  <a href="mailto:contato@petstyle.com.br" class="mt-0.5 block text-sm sm:text-base font-bold text-slate-900 hover:text-orange-600 transition">
+                    contato@petstyle.com.br
+                  </a>
+                  <p class="text-xs text-slate-500 mt-0.5">Respondemos em até 2 horas úteis</p>
+                </div>
+              </div>
+
+              <!-- Telefone / WhatsApp -->
+              <div class="flex items-start gap-4 rounded-2xl bg-slate-50 p-4 border border-slate-200/70">
+                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-pink-500 text-white shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Telefone &amp; WhatsApp</h3>
+                  <a href="tel:+5511998765432" class="mt-0.5 block text-sm sm:text-base font-bold text-slate-900 hover:text-pink-600 transition">
+                    (11) 99876-5432 / (11) 3456-7890
+                  </a>
+                  <p class="text-xs text-slate-500 mt-0.5">Seg a Sex das 9h às 19h • Sáb das 9h às 14h</p>
+                </div>
+              </div>
+
+              <!-- Showroom / Endereço -->
+              <div class="flex items-start gap-4 rounded-2xl bg-slate-50 p-4 border border-slate-200/70 sm:col-span-2 lg:col-span-1">
+                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Showroom Pet Friendly</h3>
+                  <p class="mt-0.5 text-sm sm:text-base font-bold text-slate-900">
+                    Rua dos Pinheiros, 742 - Pinheiros, São Paulo/SP
+                  </p>
+                  <p class="text-xs text-slate-500 mt-0.5">Traga seu pet para experimentar os tamanhos!</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Coluna do Formulário de Contato (7 colunas no desktop) -->
+          <div class="lg:col-span-7">
+            <div class="rounded-3xl bg-slate-50 p-6 sm:p-8 md:p-10 border border-slate-200/80 shadow-sm">
+              <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-2">
+                Envie uma mensagem
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-500 mb-6">
+                Preencha os campos abaixo e nossa equipe retornará o mais rápido possível.
+              </p>
+
+              <form id="formContato" class="space-y-5" novalidate>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                  <!-- Campo Nome -->
+                  <div>
+                    <label for="nome" class="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5">
+                      Seu Nome <span class="text-orange-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="nome"
+                      name="nome"
+                      required
+                      placeholder="Ex.: Ana Beatriz"
+                      class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition"
+                    >
+                  </div>
+
+                  <!-- Campo E-mail -->
+                  <div>
+                    <label for="email" class="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5">
+                      Seu E-mail <span class="text-orange-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      placeholder="voce@email.com"
+                      class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition"
+                    >
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                  <!-- Campo Telefone -->
+                  <div>
+                    <label for="telefone" class="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5">
+                      Telefone / WhatsApp
+                    </label>
+                    <input
+                      type="tel"
+                      id="telefone"
+                      name="telefone"
+                      placeholder="(11) 99999-9999"
+                      class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition"
+                    >
+                  </div>
+
+                  <!-- Campo Nome e Espécie do Pet -->
+                  <div>
+                    <label for="pet" class="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5">
+                      Nome &amp; Porte do Pet
+                    </label>
+                    <input
+                      type="text"
+                      id="pet"
+                      name="pet"
+                      placeholder="Ex.: Paçoca (Cão Médio)"
+                      class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition"
+                    >
+                  </div>
+                </div>
+
+                <!-- Campo Mensagem -->
+                <div>
+                  <label for="mensagem" class="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5">
+                    Mensagem <span class="text-orange-500">*</span>
+                  </label>
+                  <textarea
+                    id="mensagem"
+                    name="mensagem"
+                    rows="4"
+                    required
+                    placeholder="Conte como podemos ajudar você e o seu pet..."
+                    class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition"
+                  ></textarea>
+                </div>
+
+                <!-- Botão Enviar -->
+                <button
+                  type="submit"
+                  class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-pink-500 px-8 py-3.5 text-sm sm:text-base font-bold text-white shadow-md shadow-orange-500/20 hover:from-orange-600 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
+                >
+                  <span>Enviar Mensagem</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                </button>
+
+                <!-- Feedback de Envio -->
+                <div id="alertaSucesso" class="hidden rounded-xl bg-emerald-50 border border-emerald-200 p-4 text-sm font-semibold text-emerald-800" role="status">
+                  🐾 Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.
+                </div>
+                <div id="alertaErro" class="hidden rounded-xl bg-rose-50 border border-rose-200 p-4 text-sm font-semibold text-rose-700" role="alert">
+                  Por favor, preencha os campos obrigatórios (Nome, E-mail e Mensagem) corretamente.
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       RODAPÉ (Footer com Flexbox e Grid)
+       ========================================== -->
+  <footer class="bg-slate-900 text-slate-300 pt-12 pb-8 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800 text-center md:text-left">
+        <div class="flex items-center gap-3">
+          <img src="imagens/logo.svg" alt="Logo Pet&Style" class="w-10 h-10 rounded-xl">
+          <div>
+            <span class="text-xl font-extrabold text-white">Pet<span class="text-orange-400">&amp;Style</span></span>
+            <p class="text-xs text-slate-400">Amor, conforto e design para o seu melhor amigo.</p>
+          </div>
+        </div>
+
+        <nav aria-label="Links do rodapé" class="flex flex-wrap justify-center gap-6 text-sm font-medium">
+          <a href="#inicio" class="hover:text-orange-400 transition">Início</a>
+          <a href="#produtos" class="hover:text-orange-400 transition">Produtos</a>
+          <a href="#depoimentos" class="hover:text-orange-400 transition">Depoimentos</a>
+          <a href="#contato" class="hover:text-orange-400 transition">Contato</a>
+        </nav>
+      </div>
+
+      <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 text-center sm:text-left">
+        <p>&copy; 2026 <strong>Pet&amp;Style Loja Virtual</strong>. Todos os direitos reservados.</p>
+        <p>Desenvolvido com HTML5 &amp; Tailwind CSS (Mobile-First).</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast de Produto Adicionado -->
+  <div id="toastCarrinho" class="fixed bottom-5 right-5 z-50 hidden items-center gap-3 rounded-2xl bg-slate-900 px-5 py-3.5 text-sm font-semibold text-white shadow-2xl border border-slate-700">
+    <span class="flex h-6 w-6 items-center justify-center rounded-full bg-orange-500 text-xs font-bold">✓</span>
+    <span id="textoToast">Produto adicionado à sacola!</span>
+  </div>
+
+  <!-- Scripts de Interatividade (Menu Mobile, Sacola e Formulário) -->
+  <script>
+    // Controle do Menu Mobile
+    const btnMenuMobile = document.getElementById('btnMenuMobile');
+    const menuMobile = document.getElementById('menuMobile');
+    const linksMobile = document.querySelectorAll('.link-mobile');
+
+    btnMenuMobile.addEventListener('click', () => {
+      const estaAberto = !menuMobile.classList.contains('hidden');
+      menuMobile.classList.toggle('hidden');
+      btnMenuMobile.setAttribute('aria-expanded', String(!estaAberto));
+    });
+
+    linksMobile.forEach(link => {
+      link.addEventListener('click', () => {
+        menuMobile.classList.add('hidden');
+        btnMenuMobile.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Interação dos Botões "Adicionar" nos Cards de Produtos
+    const botoesComprar = document.querySelectorAll('.btn-comprar');
+    const contadorCarrinho = document.getElementById('contadorCarrinho');
+    const toastCarrinho = document.getElementById('toastCarrinho');
+    const textoToast = document.getElementById('textoToast');
+    let totalItens = 0;
+    let timeoutToast;
+
+    botoesComprar.forEach(botao => {
+      botao.addEventListener('click', () => {
+        totalItens += 1;
+        contadorCarrinho.textContent = totalItens;
+        const nomeProduto = botao.getAttribute('data-produto');
+        textoToast.textContent = `"${nomeProduto}" adicionado à sacola!`;
+        toastCarrinho.classList.remove('hidden');
+        toastCarrinho.classList.add('flex');
+
+        clearTimeout(timeoutToast);
+        timeoutToast = setTimeout(() => {
+          toastCarrinho.classList.add('hidden');
+          toastCarrinho.classList.remove('flex');
+        }, 3000);
+      });
+    });
+
+    // Validação Simples do Formulário de Contato
+    const formContato = document.getElementById('formContato');
+    const alertaSucesso = document.getElementById('alertaSucesso');
+    const alertaErro = document.getElementById('alertaErro');
+
+    formContato.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mensagem = document.getElementById('mensagem').value.trim();
+
+      if (!nome || !email || !email.includes('@') || !mensagem) {
+        alertaSucesso.classList.add('hidden');
+        alertaErro.classList.remove('hidden');
+        return;
+      }
+
+      alertaErro.classList.add('hidden');
+      alertaSucesso.classList.remove('hidden');
+      formContato.reset();
+    });
+  </script>
+</body>
+</html>

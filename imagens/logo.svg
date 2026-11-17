@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="brandGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#brandGrad)"/>
+  <!-- Almofada principal da patinha -->
+  <path d="M32 31c-6.5 0-12 5.2-12 11.2 0 4.3 3.4 6.8 7.5 6.8 2 0 3.2-.7 4.5-.7s2.5.7 4.5.7c4.1 0 7.5-2.5 7.5-6.8C44 36.2 38.5 31 32 31z" fill="#ffffff"/>
+  <!-- Dedinhos da patinha -->
+  <ellipse cx="19" cy="25" rx="4.2" ry="5.5" transform="rotate(-20 19 25)" fill="#ffffff"/>
+  <ellipse cx="27.5" cy="20" rx="4.2" ry="5.8" transform="rotate(-7 27.5 20)" fill="#ffffff"/>
+  <ellipse cx="36.5" cy="20" rx="4.2" ry="5.8" transform="rotate(7 36.5 20)" fill="#ffffff"/>
+  <ellipse cx="45" cy="25" rx="4.2" ry="5.5" transform="rotate(20 45 25)" fill="#ffffff"/>
+  <!-- Gravatinha borboleta estilosa -->
+  <path d="M25 50l7 3.5-7 3.5v-7zm14 0l-7 3.5 7 3.5v-7z" fill="#fde047"/>
+  <circle cx="32" cy="53.5" r="2.2" fill="#ffffff"/>
+</svg>
